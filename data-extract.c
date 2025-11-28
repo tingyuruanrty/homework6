@@ -15,7 +15,7 @@ int copy_integers(FILE *outfp, FILE *infp, int start, int end)
     }
     if(fseek(outfp, sizeof(int)*start, SEEK_SET)!=0){
         return -1;
-    }q
+    }
 
     for(int i = start; i < end+1;++i){
         if(fread(&buffer,sizeof(int),1, infp)!=sizeof(int)){
