@@ -23,12 +23,12 @@ int copy_integers(FILE *outfp, FILE *infp, int start, int end)
 
     for (int i = start; i < end + 1; ++i)
     {
-        if (fread(&buffer, 4, 1, infp) != 4)
+        if (fread(&buffer, 4, 1, infp) != 1)
         {
             printf("fread is wrong");
             return -1;
         }
-        if (fwrite(buffer, 4, 1, outfp) != 4)
+        if (fwrite(&buffer, 4, 1, outfp) != 1)
         {
             printf("fwrite is wrong");
             return -1;
