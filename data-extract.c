@@ -12,10 +12,12 @@ int copy_integers(FILE *outfp, FILE *infp, int start, int end)
 
     if (fseek(infp, 4 * start, SEEK_SET) != 0)
     {
+        printf("fseek1 is wrong");
         return -1;
     }
     if (fseek(outfp, 4 * start, SEEK_SET) != 0)
     {
+        printf("fseek2 is wrong");
         return -1;
     }
 
@@ -23,10 +25,12 @@ int copy_integers(FILE *outfp, FILE *infp, int start, int end)
     {
         if (fread(&buffer, 4, 1, infp) != 4)
         {
+            printf("fread is wrong");
             return -1;
         }
         if (fwrite(buffer, 4, 1, outfp) != 4)
         {
+            printf("fwrite is wrong");
             return -1;
         }
     }
@@ -76,6 +80,7 @@ int main(int argc, char *argv[])
             printf("Start and end must be >= 0 and start must be <= end\n");
             return -1;
         }
+
         if (copy_integers(outfp, infp, start, end))
         {
             printf("copy_integers() returned an error.\n");
