@@ -15,11 +15,11 @@ int copy_integers(FILE *outfp, FILE *infp, int start, int end)
         printf("fseek1 is wrong");
         return -1;
     }
-    if (fseek(outfp, 4 * start, SEEK_SET) != 0)
-    {
-        printf("fseek2 is wrong");
-        return -1;
-    }
+    // if (fseek(outfp, 4 * start, SEEK_SET) != 0)
+    // {
+    //     printf("fseek2 is wrong");
+    //     return -1;
+    // }
 
     for (int i = start; i < end + 1; ++i)
     {
