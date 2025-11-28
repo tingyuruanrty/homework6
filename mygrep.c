@@ -19,10 +19,10 @@ int print_matched_lines(const char *s, const char *filename) {
         return -1;
     }
 
-    char* stringHolder;
+    char stringHolder[LINE_SIZE];
     while(fgets(stringHolder, LINE_SIZE, fileWeRead) != NULL){
         if(strstr(stringHolder,s) != NULL){
-            printf("%s\n", stringHolder);
+            printf("%s", stringHolder);
         }
     }
 
