@@ -10,10 +10,12 @@ int copy_integers(FILE *outfp, FILE *infp, int start, int end)
     
     int buffer;
 
-    fseek(infp, 4*start, SEEK_SET);
-    fread(&buffer,4,end-start+1, infp);
-    fseek(outfp, 4*start, SEEK_SET);
-    fwrite(&buffer,4,end-start+1, outfp);
+    fseek(infp, sizeof(int)*start, SEEK_SET);
+    fseek(outfp, sizeof(int)*start, SEEK_SET);
+    for(int i = start; i < end+1;++i){
+        fread(&buffer,sizeof(int),1, infp);
+        fwrite(&buffer,sizeof(int),1, outfp);
+    }
     return 0;
 }
 
