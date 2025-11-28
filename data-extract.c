@@ -8,6 +8,12 @@ int copy_integers(FILE *outfp, FILE *infp, int start, int end)
 	     You may like to use the functions fseek(), fread() and fwrite() to accomplish this task. Check man pages for details.
 	     Return 0 upon successful completion. Otherwise, return -1. */	
     
+    int buffer;
+
+    fseek(infp, 4*start, SEEK_SET);
+    fread(&buffer,4,end-start+1, infp);
+    fseek(outfp, 4*start, SEEK_SET);
+    fwrite(&buffer,4,end-start+1, outfp);
     return 0;
 }
 
