@@ -15,13 +15,13 @@ int copy_integers(FILE *outfp, FILE *infp, int start, int end)
     }
     if(fseek(outfp, sizeof(int)*start, SEEK_SET)!=0){
         return -1;
-    }
+    }q
 
     for(int i = start; i < end+1;++i){
-        if(fread(&buffer,sizeof(int),1, infp)!=1){
+        if(fread(&buffer,sizeof(int),1, infp)!=sizeof(int)){
             return -1;
         }
-        if(fwrite(&buffer,sizeof(int),1, outfp)!=1){
+        if(fwrite(&buffer,sizeof(int),1, outfp)!=sizeof(int)){
             return -1;
         }
     }
